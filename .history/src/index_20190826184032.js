@@ -35,9 +35,7 @@ function sumWithDefaults(a, b) {
   return result;
 }
 
-var result = sumWithDefaults(10, 20);
-
-console.log(result);
+sumWithDefaults(10, 20);
 
 
 /*

@@ -37,8 +37,6 @@ function sumWithDefaults(a, b) {
 
 var result = sumWithDefaults(10, 20);
 
-console.log(result);
-
 
 /*
  Задание 3:

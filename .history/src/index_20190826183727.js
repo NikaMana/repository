@@ -31,14 +31,7 @@ function returnFirstArgument(a) {
    sumWithDefaults(10) вернет 110
  */
 function sumWithDefaults(a, b) {
-  var result = a + b;
-  return result;
 }
-
-var result = sumWithDefaults(10, 20);
-
-console.log(result);
-
 
 /*
  Задание 3:
