@@ -12,7 +12,9 @@
 
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
-const returnFirstArgument = (n) => n;
+function returnFirstArgument(a) {
+  return a
+}
 
 /*
  Задание 2:
@@ -28,7 +30,15 @@ const returnFirstArgument = (n) => n;
  Пример:
    sumWithDefaults(10) вернет 110
  */
-const sumWithDefaults = (a, b = 100) => a + b;
+function sumWithDefaults(a, b) {
+  var result = a + b;
+  return result;
+}
+
+var result = sumWithDefaults(10, 100);
+
+console.log(result);
+
 
 /*
  Задание 3:
@@ -39,9 +49,9 @@ const sumWithDefaults = (a, b = 100) => a + b;
    returnFnResult(() => 'привет') вернет 'привет'
  */
 function returnFnResult(fn) {
-  return fn();
+    var b = 10;
+    return a + b;
 }
-
 
 /*
  Задание 4:
@@ -56,12 +66,8 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number = 0) {
-  return function count(){
-    return ++number;
-  }
+function returnCounter(number) {
 }
-let result = returnCounter(10);
 
 /*
  Задание 5 *:
@@ -72,9 +78,7 @@ let result = returnCounter(10);
  Пример:
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
-function returnArgumentsArray(...nums) {
-  let myArr = [...nums];
-  return myArr;
+function returnArgumentsArray() {
 }
 
 /*
@@ -92,9 +96,7 @@ function returnArgumentsArray(...nums) {
 
    console.log(newSum()) выведет 6
  */
-function bindFunction(fn, ...arx) {
-  return fn.bind(null, ...arx)
-
+function bindFunction(fn) {
 }
 
 export {

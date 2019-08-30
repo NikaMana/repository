@@ -28,7 +28,7 @@ const returnFirstArgument = (n) => n;
  Пример:
    sumWithDefaults(10) вернет 110
  */
-const sumWithDefaults = (a, b = 100) => a + b;
+const sumWithDefaults = (a, b = 100) => n + m;
 
 /*
  Задание 3:
@@ -56,7 +56,7 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number = 0) {
+function returnCounter(number) {
   return function count(){
     return ++number;
   }
@@ -92,9 +92,8 @@ function returnArgumentsArray(...nums) {
 
    console.log(newSum()) выведет 6
  */
-function bindFunction(fn, ...arx) {
-  return fn.bind(null, ...arx)
-
+function bindFunction(fn) {
+  return fn.bind(null, ...arguments)
 }
 
 export {
