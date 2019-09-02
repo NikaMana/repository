@@ -93,12 +93,7 @@ function slice(array, from, to = array.length) {
  */
 function createProxy(obj) = obj => (
   new Proxy(obj, {
-    set(target, prop,value) {
-      if (typeof value === 'number') {
-        target[prop] = value ** 2;
-      }
-      return true;
-    }
+    set()
 }
 
 export {

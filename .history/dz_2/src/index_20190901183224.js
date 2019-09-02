@@ -46,7 +46,6 @@ const reduce(array, fn, initial) => {
 let arr = [1, 2, 3, 4, 5];
 
 let result = arr.reduce((sum,current) => sum + current, 0);
-let result1 = reduce(arr, (sum, current) => sum + current, 0)
 
 /*
  Задание 4:
@@ -73,8 +72,8 @@ function upperProps(obj) {
 function slice(array, from, to = array.length) {
   let arr = [];
 
-  let fromMin = from < 0 ? array.length - Math.abs(from) : from;
-  let toMin = to < 0 ? array.length - Math.abs(to) : to;
+  let fromMin = from < 0 ?array.length - 
+  let toMin = to < 0 ? array.length - Math
 
   for (let i = fromMin; i < toMin; i++) {
     arr.push(array[i]);
@@ -93,12 +92,7 @@ function slice(array, from, to = array.length) {
  */
 function createProxy(obj) = obj => (
   new Proxy(obj, {
-    set(target, prop,value) {
-      if (typeof value === 'number') {
-        target[prop] = value ** 2;
-      }
-      return true;
-    }
+    set()
 }
 
 export {
