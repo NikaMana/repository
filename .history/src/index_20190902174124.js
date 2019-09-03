@@ -29,7 +29,7 @@ function map(array, fn) {
  Напишите аналог встроенного метода reduce для работы с массивами
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
-function reduce(array, fn, initial) {
+const reduce(array, fn, initial) => {
   const currentIndex = initial ? 0 : 1;
   let result = initial ? initial : array[0];
 
