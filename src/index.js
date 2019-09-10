@@ -149,14 +149,14 @@ function deleteTextNodesRecursive(where) {
 function collectDOMStat(root) {
   var target = document.getElementById('some-id');
   var observer = new MutationObserver(function(mutations) {
-    mutations forEach(function(mutation) {
+    mutations.forEach(function(mutation) {
       console.log(mutation.type);
     });
   });
 
   var config = { attributes: true, childList: true, charcterData: true};
 
-  observer.observe(target, config);
+  observer.observe(root, config);
 }
 
 /*
@@ -192,7 +192,23 @@ function collectDOMStat(root) {
    }
  */
 function observeChildNodes(where, fn) {
+  for (let child of where.childNodes) {
+    if (child.nodeType === 3) {
+      child.remove();
+    } else if (child.nodeType === 1 && child.childNodes.length > 0) {
+      deleteTextNodesRecursive(child)
+    }
+  }
+  for (let child of fn.childNodes) {
+    if (child.nodeType === 3) {
+      child.remove();
+    } else if (child.nodeType === 1 && child.childNodes.length > 0) {
+      deleteTextNodesRecursive(child)
+    }
+  }
 }
+  
+    
 
 export {
     createDivWithText,
