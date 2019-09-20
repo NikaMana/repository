@@ -63,12 +63,28 @@ const createCookie = () => {
 
 }
 
-const createRow = () => {
-  const newItem = document.createElement('li');
+const createRow = (name, value) => {
+  const newItem = document.createElement('tr');
   newItem.textContent = nameValue;
+  newItem.innerHTML = `<td>${name}</td><td>${value}</td><td><button class="Button">Удалить</button></td>`;
+  listTable.append(newItem)
 }
 
-const removeRow = () => {
+for(let item in cookieObj) {
+  createRow(item, cookieObj[item])
+}
+
+listTable.addEventListener('click', (e) => {
+  if(e.target.tagName === "BUTTON") {
+    document.cookie = `${cookieName.value}=${cookieValue.value}`;
+
+    cookieName.value = '';
+    cookieValue = '';
+  }
+
+});
+
+const CreateRemoveButton = () => {
   const deleteButton = document.createElement('button');
   deleteButton.textContent = "Удалить";
 }
