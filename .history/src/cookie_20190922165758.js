@@ -82,7 +82,7 @@ function createCookieTable(cookieObject, mathConf = '') {
     listTable.innerHTML = '';
     for (let cookie in cookieObject) {
         if (cookieObject[cookie]) {
-            if (target(cookie, mathConf) || target(cookieObject[cookie], mathConf)) {
+            if (Target(cookie, mathConf) || Target(cookieObject[cookie], mathConf)) {
                 let cookieTr = document.createElement('tr');
                 let cookieName = document.createElement('td');
                 let cookieValue = document.createElement('td');
@@ -111,8 +111,8 @@ function deleteCookie(cookie) {
     Cookie = cookieObj();
 }
 
-function target(full, row) {
-    let regExp = new RegExp(row, 'i');
+function target(full, chunk) {
+    let regExp = new RegExp(chunk, 'i');
 
     return regExp.test(full);
 }

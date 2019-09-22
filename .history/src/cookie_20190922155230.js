@@ -43,80 +43,63 @@ const addButton = homeworkContainer.querySelector('#add-button');
 // таблица со списком cookie
 const listTable = homeworkContainer.querySelector('#list-table tbody');
 
-let Cookie = cookieObj();
-
-let mathConf = getMathConf();
-
-createCookieTable(Cookie);
-
 filterNameInput.addEventListener('keyup', function() {
     // здесь можно обработать нажатия на клавиши внутри текстового поля для фильтрации cookie
-    mathConf = getMathConf();
-    createCookieTable(Cookie, mathConf);
 });
 
 addButton.addEventListener('click', () => {
     // здесь можно обработать нажатие на кнопку "добавить cookie"
-    let nextCookieName = addNameInput.value;
-    let nextCookieValue = addValueInput.value;
-
-    if (nextCookieName && nextCookieValue) {
-        document.cookie = `${nextCookieName}=${nextCookieValue}`;
-    }
-
-    Cookie = cookieObj();
-    createCookieTable(Cookie, mathConf);
 });
 
-function cookieObj() {
-    return document.cookie.split('; ').reduce((prev, current) => {
-        let [name, value] = current.split('=');
+let cookieObj = document.cookie.split('; ').reduce((prev, current) => {
+  const [name, value] = current.split("=");
+  prev [name] = value;
+  return prev;
+}, {});
 
-        prev[name] = value;
+const list = document.querySelector('#list');
 
-        return prev;
-    }, {});
+const createCookie = () => {
+
 }
 
-function createCookieTable(cookieObject, mathConf = '') {
-    listTable.innerHTML = '';
-    for (let cookie in cookieObject) {
-        if (cookieObject[cookie]) {
-            if (target(cookie, mathConf) || target(cookieObject[cookie], mathConf)) {
-                let cookieTr = document.createElement('tr');
-                let cookieName = document.createElement('td');
-                let cookieValue = document.createElement('td');
-                let cookieDelBut = document.createElement('button');
-                let cookieNameText = document.createTextNode(cookie);
-                let cookieValueText = document.createTextNode( cookieObject[cookie]);
-
-                cookieName.appendChild(cookieNameText);
-                cookieValue.appendChild(cookieValueText);
-                cookieTr.appendChild(cookieName);
-                cookieTr.appendChild(cookieValue);
-                cookieDelBut.innerText = 'Delete';
-                cookieDelBut.addEventListener('click', () => {
-                    deleteCookie(cookie);
-                    listTable.removeChild(cookieTr);
-                });
-                cookieTr.appendChild(cookieDelBut);
-                listTable.appendChild(cookieTr);
-            }
-        }
-    }
+const createRow = (name, value) => {
+  const newItem = document.createElement('tr');
+  newItem.innerHTML = `<td>${name}</td><td>${value}</td><td><button class="Button">Удалить</button></td>`;
+  listTable.append(newItem)
 }
 
-function deleteCookie(cookie) {
-    document.cookie = `${cookie}=;expires=Fri, 01 Jan 2025 00:00:01 GMT;`;
-    Cookie = cookieObj();
+for(let item in cookieObj) {
+  createRow(item, cookieObj[item])
 }
 
-function target(full, row) {
-    let regExp = new RegExp(row, 'i');
+listTable.addEventListener('click', (e) => {
+  if(e.target.tagName === "BUTTON") {
+    document.cookie = `${cookieName.value}=${cookieValue.value}`;
 
-    return regExp.test(full);
+    cookieName.value = '';
+    cookieValue = '';
+  }
+
+});
+
+const CreateRemoveButton = () => {
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = "Удалить";
 }
 
-function getMathConf() {
-    return filterNameInput.value;
+const init = () => {
+  const variable = [];
+  createCookie()
+
+}
+
+const handleDelete = () => {
+  list.removeChild(newItem);
+    let [name, value] = newItem.firstChild.textContent.split(' ');
+    document.cookie = `"${name}=${value};max-age=-1"`;
+}
+
+for (name in cookieObj){
+  addCookie(`${name}${cookieObj[name]}`)
 }

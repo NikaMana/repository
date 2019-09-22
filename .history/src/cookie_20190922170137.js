@@ -111,11 +111,11 @@ function deleteCookie(cookie) {
     Cookie = cookieObj();
 }
 
-function target(full, row) {
-    let regExp = new RegExp(row, 'i');
+// function target(full, row) {
+//     let regExp = new RegExp(row, 'i');
 
-    return regExp.test(full);
-}
+//     return regExp.test(full);
+// }
 
 function getMathConf() {
     return filterNameInput.value;

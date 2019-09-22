@@ -111,8 +111,8 @@ function deleteCookie(cookie) {
     Cookie = cookieObj();
 }
 
-function target(full, row) {
-    let regExp = new RegExp(row, 'i');
+function target(full, chunk) {
+    let regExp = new RegExp(chunk, 'i');
 
     return regExp.test(full);
 }

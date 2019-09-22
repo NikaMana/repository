@@ -82,7 +82,7 @@ function createCookieTable(cookieObject, mathConf = '') {
     listTable.innerHTML = '';
     for (let cookie in cookieObject) {
         if (cookieObject[cookie]) {
-            if (target(cookie, mathConf) || target(cookieObject[cookie], mathConf)) {
+            if (isMatching(cookie, mathConf) || isMatching(cookieObject[cookie], mathConf)) {
                 let cookieTr = document.createElement('tr');
                 let cookieName = document.createElement('td');
                 let cookieValue = document.createElement('td');
@@ -107,12 +107,12 @@ function createCookieTable(cookieObject, mathConf = '') {
 }
 
 function deleteCookie(cookie) {
-    document.cookie = `${cookie}=;expires=Fri, 01 Jan 2025 00:00:01 GMT;`;
+    document.cookie = `${cookie}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
     Cookie = cookieObj();
 }
 
-function target(full, row) {
-    let regExp = new RegExp(row, 'i');
+function isMatching(full, chunk) {
+    let regExp = new RegExp(chunk, 'i');
 
     return regExp.test(full);
 }
